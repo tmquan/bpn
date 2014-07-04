@@ -12,9 +12,15 @@ project(DeepNeuralNetwork CXX C)
 # ----------------------------------------------------------------------------
 # All binary files will be stored here
 # ----------------------------------------------------------------------------
-set(RESOURCE_INPUT_DIRECTORY 		"${CMAKE_SOURCE_DIR}/data")
-set(RUNTIME_OUTPUT_DIRECTORY 		"${CMAKE_SOURCE_DIR}/bin")
-set(LIBRARY_OUTPUT_DIRECTORY 		"${CMAKE_SOURCE_DIR}/lib")
+# set(RESOURCE_INPUT_DIRECTORY 		"${CMAKE_SOURCE_DIR}/data")
+# set(RUNTIME_OUTPUT_DIRECTORY 		"${CMAKE_SOURCE_DIR}/bin")
+# set(LIBRARY_OUTPUT_DIRECTORY 		"${CMAKE_SOURCE_DIR}/lib")
+# set(INCLUDE_HEADER_DIRECTORY 		"${CMAKE_SOURCE_DIR}/include")
+
+set(RESOURCE_INPUT_DIRECTORY 		"${CMAKE_BINARY_DIR}/data")
+set(RUNTIME_OUTPUT_DIRECTORY 		"${CMAKE_BINARY_DIR}/bin")
+set(LIBRARY_OUTPUT_DIRECTORY 		"${CMAKE_BINARY_DIR}/lib")
+set(INCLUDE_HEADER_DIRECTORY 		"${CMAKE_BINARY_DIR}/include")
 
 # ----------------------------------------------------------------------------
 # Enable nightly test
@@ -25,10 +31,10 @@ enable_testing()
 # Process subdirectories 
 # ----------------------------------------------------------------------------
 # dnn.hpp and legacy headers
-add_subdirectory(include)
+# add_subdirectory(include)
 
 # libraries directory 
-add_subdirectory(lib)
+# add_subdirectory(lib)
 
 # Generate targets for documentation 
 add_subdirectory(doc)
@@ -49,5 +55,7 @@ add_custom_target(clear
 	COMMAND rm			
 	`find ./ -iname '*Make*' -not -name CMakeLists.txt` 
 	`find ./ -iname 'bin'`
+	`find ./ -iname 'lib'`
+	`find ./ -iname 'include'`
 	`find ./ -iname 'Testing'`
 	-rf)    
